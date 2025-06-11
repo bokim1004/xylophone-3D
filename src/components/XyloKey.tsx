@@ -19,21 +19,29 @@ function XyloKey({ note, color,height,position,isPressed, ...props }: XyloKeyPro
     config: { tension: 300, friction: 10 },
   });
 
+  const { emissiveIntensity } = useSpring({
+    emissiveIntensity: isPressed ? 0.4 : 0.2,
+    config: { tension: 300, friction: 10 },
+  });
 
   return(
     <animated.mesh
     position-x={position[0]}
     position-y={y}
     position-z={position[2]}
+    rotation-x={-Math.PI / 1.7}
     castShadow
     receiveShadow
     userData={{ note }}
   >
     <boxGeometry args={[1, 0.3, height]} />
-    <meshStandardMaterial  
+    <animated.meshStandardMaterial  
      color="#cccccc"       
      metalness={1}           
-     roughness={0.2}    />
+     roughness={0.1}
+     emissive="#ffffff"
+     emissiveIntensity={emissiveIntensity}   
+         />
   </animated.mesh>
   )
 }
