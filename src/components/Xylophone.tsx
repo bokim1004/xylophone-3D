@@ -1,5 +1,5 @@
 import { useThree } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
 import { getKeyLength } from "../utils";
 import XyloKey from "./XyloKey";
@@ -31,6 +31,8 @@ export default function Xylophone({ setCurrentNote }: XylophoneProps){
   const mouse = useRef(new THREE.Vector2());
   const { play } = useNoteSound();
 
+  const [pressedNote, setPressedNote] = useState<string | null>(null);
+
   useEffect(() => {
     const handleClick = (e:MouseEvent) => {
         // 1. 마우스 좌표 → NDC (-1 ~ 1) 로 변환
@@ -44,9 +46,12 @@ export default function Xylophone({ setCurrentNote }: XylophoneProps){
       if(intersects.length > 0){
         const key = intersects[0].object;
         const note = key.userData.note;
-        setCurrentNote(note);
-        console.log("note",note)
-        if (note) play(note);
+        if (note) {
+          setPressedNote(note);
+          setCurrentNote(note);
+          play(note);
+          setTimeout(() => setPressedNote(null), 200); // 0.2초 후 원위치
+        }
       }
     }
 
@@ -66,6 +71,7 @@ export default function Xylophone({ setCurrentNote }: XylophoneProps){
         position={[i * 1.2 - 4, 0, 0]}
         color={getColor(note)}
         height={getKeyLength(i,notes.length)}
+        isPressed={pressedNote === note}
       />
     ))}
   </>
