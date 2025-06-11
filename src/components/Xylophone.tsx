@@ -1,6 +1,7 @@
 import { useThree } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import * as THREE from 'three';
+import { getKeyLength } from "../utils";
 import XyloKey from "./XyloKey";
 
 const notes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
@@ -53,6 +54,7 @@ export default function Xylophone(){
         note={note}
         position={[i * 1.2 - 4, 0, 0]}
         color={getColor(note)}
+        height={getKeyLength(i,notes.length)}
       />
     ))}
   </>

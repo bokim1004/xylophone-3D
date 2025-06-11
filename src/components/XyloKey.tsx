@@ -8,9 +8,12 @@ type MeshProps = ThreeElements['mesh'];
 interface XyloKeyProps extends MeshProps {
   note: string;
   color: string;
+  height:number
 }
 
-function XyloKey({ note, color, ...props }: XyloKeyProps){
+function XyloKey({ note, color,height, ...props }: XyloKeyProps){
+
+
   return(
     <mesh
     {...props}
@@ -18,8 +21,11 @@ function XyloKey({ note, color, ...props }: XyloKeyProps){
     receiveShadow
     userData={{ note }}
   >
-    <boxGeometry args={[1, 0.3, 0.5]} />
-    <meshStandardMaterial color={color} />
+    <boxGeometry args={[1, 0.3, height]} />
+    <meshStandardMaterial  
+     color="#cccccc"       
+     metalness={1}           
+     roughness={0.2}    />
   </mesh>
   )
 }

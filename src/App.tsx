@@ -5,7 +5,7 @@ import Xylophone from './components/Xylophone';
 
 function App() {
   return (
-    <Canvas shadows camera={{ position: [0, 3, 10], fov: 50 }}>
+    <Canvas shadows camera={{ position: [0, 3, 10], fov: 50 }}   style={{ width: '100vw',height: '100vh',background: '#1a1a1a' }}>
       <ambientLight intensity={0.3} />
       <directionalLight position={[0, 10, 5]} castShadow intensity={1} />
       <Xylophone />
