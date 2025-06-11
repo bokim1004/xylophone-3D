@@ -5,6 +5,11 @@ import { getKeyLength } from "../utils";
 import XyloKey from "./XyloKey";
 import { useNoteSound } from "./useNoteSound";
 
+
+interface XylophoneProps {
+  setCurrentNote: (note: string) => void;
+}
+
 const notes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4'];
 
 function getColor(note: string) {
@@ -20,7 +25,7 @@ function getColor(note: string) {
   return colors[note] ?? '#ffffff';
 }
 
-export default function Xylophone(){
+export default function Xylophone({ setCurrentNote }: XylophoneProps){
   const { camera, scene } = useThree();
   const raycaster = useRef(new THREE.Raycaster());
   const mouse = useRef(new THREE.Vector2());
@@ -39,6 +44,7 @@ export default function Xylophone(){
       if(intersects.length > 0){
         const key = intersects[0].object;
         const note = key.userData.note;
+        setCurrentNote(note);
         console.log("note",note)
         if (note) play(note);
       }
