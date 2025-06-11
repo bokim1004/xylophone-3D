@@ -1,25 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
+import { OrbitControls } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 import './App.css';
+import Xylophone from './components/Xylophone';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Canvas shadows camera={{ position: [0, 3, 10], fov: 50 }}>
+      <ambientLight intensity={0.3} />
+      <directionalLight position={[0, 10, 5]} castShadow intensity={1} />
+      <Xylophone />
+      <OrbitControls />
+    </Canvas>
   );
 }
 
