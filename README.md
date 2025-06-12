@@ -20,3 +20,6 @@ https://xylophone-3-d.vercel.app/
 - [@react-spring/three](https://react-spring.dev/)
 - [@react-three/drei](https://github.com/pmndrs/drei) – helpers like `Text3D`, `Center`, `OrbitControls`
 - HTML5 Audio API
+
+  
+![스크린샷 2025-06-12 오후 6 34 15](https://github.com/user-attachments/assets/6a667a02-001c-46e3-b21b-a786c29f2de9)
