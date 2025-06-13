@@ -2,7 +2,7 @@
 
 An interactive 3D xylophone built with React + Three.js (R3F).  
 
-🔗 [Live Demo](https://xylophone-3d.vercel.app/)
+🔗 [Live Demo](https://xylophone-3-d.vercel.app/)
 
 
 ## 🚀 Features
